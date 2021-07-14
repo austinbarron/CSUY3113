@@ -6,6 +6,7 @@
 
 #define GL_GLEXT_PROTOTYPES 1
 #include <SDL.h>
+#include <SDL_mixer.h>
 #include <SDL_opengl.h>
 #include "glm/mat4x4.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -49,6 +50,13 @@ GLuint starTextureID;
 GLuint marioTextureID;
 GLuint luigiTextureID;
 
+// dealing with the music:
+Mix_Music* music;
+
+//dealing with the sound effects:
+Mix_Chunk* bounce;
+
+
 GLuint LoadTexture(const char* filePath) {
  int w, h, n;
  unsigned char* image = stbi_load(filePath, &w, &h, &n, STBI_rgb_alpha);
@@ -69,6 +77,7 @@ GLuint LoadTexture(const char* filePath) {
  stbi_image_free(image);
  return textureID;
 }
+
 bool check_collission(float x1, float x2, float y1, float y2, float w1, float w2, float h1, float h2 ){
     float xdist = fabs(x1 - x2) - ((w1 + w2) / 2.0f);
     float ydist = fabs(y1 - y2) - ((h1 + h2) / 2.0f);
@@ -82,7 +91,7 @@ bool check_collission(float x1, float x2, float y1, float y2, float w1, float w2
 }
 
 void Initialize() {
-    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     displayWindow = SDL_CreateWindow("Textured!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
     SDL_GL_MakeCurrent(displayWindow, context);
@@ -94,6 +103,16 @@ void Initialize() {
     glViewport(0, 0, 640, 480);
     
     program.Load("shaders/vertex_textured.glsl", "shaders/fragment_textured.glsl");
+    
+    // Start Audio
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
+    
+    music = Mix_LoadMUS("dooblydoo.mp3"); //LOADING THE MUSIC
+    Mix_PlayMusic(music, -1); //PLAYING THE MUSIC
+    Mix_VolumeMusic(MIX_MAX_VOLUME/4 ); // LOWERING THE VOLUME OF THE MUSIC
+    
+    bounce = Mix_LoadWAV("bounce.wav");
+    
     
     viewMatrix = glm::mat4(1.0f);
     starMatrix = glm::mat4(1.0f);
@@ -117,6 +136,7 @@ void Initialize() {
     starTextureID = LoadTexture("star.png");
     marioTextureID = LoadTexture("mario.png");
     luigiTextureID = LoadTexture("luigi.png");
+    
 }
 
 void ProcessInput() {
@@ -211,10 +231,12 @@ void Update() {
     
     if (luigi_star_collided | mario_star_collided){ //if one of our players hits the star,
         star_movement.x = star_movement.x * -1; // we make the star switch directions
+        Mix_PlayChannel(-1,bounce,0);
     }
     
     if (star_position.y > 3.5 | star_position.y < -3.5){ //if the star hits the roof or the floor
         star_movement.y = star_movement.y * -1;// switch its direction
+        Mix_PlayChannel(-1,bounce,0);
     }
     
     if (star_position.x > 4.3 | star_position.x < -4.3){ //if the star hits the side

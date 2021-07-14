@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		145D31FA267A944D00D266CB /* luigi.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 145D31F9267A93D700D266CB /* luigi.png */; };
+		145E0B11269CFD6100E1F828 /* bounce.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 145E0B0F269CFD3800E1F828 /* bounce.wav */; };
+		145E0B12269CFD6400E1F828 /* dooblydoo.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 145E0B10269CFD3800E1F828 /* dooblydoo.mp3 */; };
 		1492B1CA2671459E003E0496 /* ctg.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1492B1C92671455E003E0496 /* ctg.png */; };
 		1492B1CC26714B97003E0496 /* mario.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1492B1CB26714B8D003E0496 /* mario.png */; };
 		1492B1CE26716ADF003E0496 /* star.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1492B1CD26716AD2003E0496 /* star.png */; };
@@ -29,6 +31,8 @@
 			dstSubfolderSpec = 6;
 			files = (
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
+				145E0B11269CFD6100E1F828 /* bounce.wav in CopyFiles */,
+				145E0B12269CFD6400E1F828 /* dooblydoo.mp3 in CopyFiles */,
 				1492B1CA2671459E003E0496 /* ctg.png in CopyFiles */,
 				1492B1CC26714B97003E0496 /* mario.png in CopyFiles */,
 				145D31FA267A944D00D266CB /* luigi.png in CopyFiles */,
@@ -40,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		145D31F9267A93D700D266CB /* luigi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luigi.png; sourceTree = "<group>"; };
+		145E0B0F269CFD3800E1F828 /* bounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bounce.wav; sourceTree = "<group>"; };
+		145E0B10269CFD3800E1F828 /* dooblydoo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dooblydoo.mp3; sourceTree = "<group>"; };
 		1492B1C92671455E003E0496 /* ctg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ctg.png; sourceTree = "<group>"; };
 		1492B1CB26714B8D003E0496 /* mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mario.png; sourceTree = "<group>"; };
 		1492B1CD26716AD2003E0496 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
@@ -93,6 +99,8 @@
 		DBDF1B512323DE3F007CECB1 /* SDLProject */ = {
 			isa = PBXGroup;
 			children = (
+				145E0B0F269CFD3800E1F828 /* bounce.wav */,
+				145E0B10269CFD3800E1F828 /* dooblydoo.mp3 */,
 				145D31F9267A93D700D266CB /* luigi.png */,
 				1492B1CB26714B8D003E0496 /* mario.png */,
 				1492B1CD26716AD2003E0496 /* star.png */,
