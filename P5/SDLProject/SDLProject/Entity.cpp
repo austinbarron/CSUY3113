@@ -25,6 +25,7 @@ bool Entity::CheckCollision(Entity *other){
     return false;
 }
 
+
 void Entity::CheckCollisionsY(Entity *objects, int objectCount)
 {
      for (int i = 0; i < objectCount; i++)
@@ -39,11 +40,24 @@ void Entity::CheckCollisionsY(Entity *objects, int objectCount)
                  position.y -= penetrationY;
                  velocity.y = 0;
                  collidedTop = true;
+                 if (object->entityType == ENEMY){
+                          ////////////////////////////////////////////////////////////////// HERE WE WANT TO LOSE A LIFE INSTEAD
+                          //isActive = false; ////////////////////////////////////////////////////////////////////////////////////////////////////
+                          position = glm::vec3(1,5,0);
+                          livesLeft--;
+                          break;
+                 }
              }
              else if (velocity.y < 0) {
                  position.y += penetrationY;
                  velocity.y = 0;
                  collidedBottom = true;
+                 if (object->entityType == ENEMY){ // IF WE COLLIDED WITH AN ENEMY
+                     // HERE WE INACTIVATE THE ENEMY AND STOP DRAWING THEM //////////////////////////
+                     object->isActive = false;
+                     // maybe we also incorporate a thing to see if its the last enemy here...hmmm...
+                     break;
+                 }
              }
          }
      }
@@ -59,6 +73,14 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
 
          if (CheckCollision(object))
          {
+             
+             if (object->entityType == ENEMY){
+                 //isActive = false; //////////////////////////////////// HERE WE WANT TO LOSE A LIFE INSTEAD
+                 livesLeft--;
+                 position = glm::vec3(1,5,0);
+                 break;
+             }
+             
              float xdist = fabs(position.x - object->position.x);
              float penetrationX = fabs(xdist - (width / 2.0f) - (object->width / 2.0f));
              if (velocity.x > 0) {

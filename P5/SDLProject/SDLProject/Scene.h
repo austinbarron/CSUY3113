@@ -22,12 +22,13 @@ struct GameState {
     Entity *enemies;
     int nextScene;
     bool areThereEnemies = true;
+    int playerLivesLeft;
 };
 
 class Scene {
 public:
     GameState state;
-    virtual void Initialize() = 0;
+    virtual void Initialize(int totalLivesLeft) = 0;
     virtual void Update(float deltaTime) = 0;
     virtual void Render(ShaderProgram *program) = 0;
 };

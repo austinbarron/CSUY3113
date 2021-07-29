@@ -59,6 +59,8 @@ public:
     
     bool isActive = true;
     
+    int livesLeft;
+    
     bool collidedTop = false;
     bool collidedBottom = false;
     bool collidedLeft = false;

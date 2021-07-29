@@ -18,9 +18,9 @@
 #include "Menu.h"
 #include "Level1.h"
 #include "Level2.h"
-//#include "Level3.h"
+#include "Level3.h"
 
-
+#include <SDL_mixer.h>
 
 SDL_Window* displayWindow;
 bool gameIsRunning = true;
@@ -31,13 +31,21 @@ glm::mat4 viewMatrix, modelMatrix, projectionMatrix;
 Scene *currentScene;
 Scene *sceneList[4];
 
-void SwitchToScene(Scene *scene) {
+
+
+void SwitchToScene(Scene *scene, int totalLivesLeft) {
     currentScene = scene;
-    currentScene->Initialize();
+    currentScene->Initialize(totalLivesLeft);
 }
 
+Mix_Music* music;
+Mix_Chunk* bounce;
+Mix_Chunk* squish;
+Mix_Chunk* failure;
+Mix_Chunk* success;
+
 void Initialize() {
-    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     displayWindow = SDL_CreateWindow("Textured!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
     SDL_GL_MakeCurrent(displayWindow, context);
@@ -50,6 +58,16 @@ void Initialize() {
     
     program.Load("shaders/vertex_textured.glsl", "shaders/fragment_textured.glsl");
     
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
+    
+    music = Mix_LoadMUS("thedescent.mp3");
+    Mix_PlayMusic(music, -1);
+    
+    bounce = Mix_LoadWAV("newbounce.wav");
+    squish = Mix_LoadWAV("squish.wav");
+    failure = Mix_LoadWAV("failure.wav");
+    success = Mix_LoadWAV("success.wav");
+    
     viewMatrix = glm::mat4(1.0f);
     modelMatrix = glm::mat4(1.0f);
     projectionMatrix = glm::ortho(-5.0f, 5.0f, -3.75f, 3.75f, -1.0f, 1.0f);
@@ -59,17 +77,18 @@ void Initialize() {
     
     glUseProgram(program.programID);
     
-    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+    glClearColor(0.2f, 0.5f, 0.5f, 1.0f);
     glEnable(GL_BLEND);
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
    // Initialize the levels and start at the first one
-   sceneList[0] = new Menu();
-   sceneList[1] = new Level1();
-   sceneList[2] = new Level2();
-   //sceneList[3] = new Level3();
-   SwitchToScene(sceneList[0]);
+    sceneList[0] = new Menu();
+    sceneList[1] = new Level1();
+    sceneList[2] = new Level2();
+    sceneList[3] = new Level3();
+    
+    SwitchToScene(sceneList[0], 3);
     
 }
 
@@ -104,7 +123,7 @@ void ProcessInput() {
                         
                     case SDLK_RETURN:
                         if (currentScene == sceneList[0]){
-                            SwitchToScene(sceneList[1]);
+                            SwitchToScene(sceneList[1],3);
                         }
                         
                 }
@@ -162,7 +181,6 @@ void Update() {
     }
     
     
-    
 }
 
 
@@ -187,7 +205,9 @@ int main(int argc, char* argv[]) {
         Update();
         
         if (currentScene->state.nextScene >= 0){ // if they're telling us a scene to go to, go there
-            SwitchToScene(sceneList[currentScene->state.nextScene]);
+            Mix_VolumeChunk(success, MIX_MAX_VOLUME / 8);
+            Mix_PlayChannel(-1,success, 0);
+            SwitchToScene(sceneList[currentScene->state.nextScene],currentScene->state.player->livesLeft);
         }
         
         Render();

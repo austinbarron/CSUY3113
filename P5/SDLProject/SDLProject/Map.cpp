@@ -87,7 +87,7 @@ bool Map::IsSolid(glm::vec3 position, float *penetration_x, float *penetration_y
     if (position.y > top_bound || position.y < bottom_bound) return false;
     
     int tile_x = floor((position.x + (tile_size / 2)) / tile_size);
-    int tile_y = -(ceil(position.y - (tile_size / 2))) / tile_size; // Our array counts up as Y goes down.
+    int tile_y = -(ceil(position.y - (tile_size / 8))) / tile_size; // Our array counts up as Y goes down.
     
     if (tile_x < 0 || tile_x >= width) return false;
     if (tile_y < 0 || tile_y >= height) return false;
@@ -99,7 +99,7 @@ bool Map::IsSolid(glm::vec3 position, float *penetration_x, float *penetration_y
     float tile_center_y = -(tile_y * tile_size);
     
     *penetration_x = (tile_size / 2) - fabs(position.x - tile_center_x);
-    *penetration_y = (tile_size / 2) - fabs(position.y - tile_center_y);
+    *penetration_y = (tile_size / 8) - fabs(position.y - tile_center_y);
     
     return true;
 }

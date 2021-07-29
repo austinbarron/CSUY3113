@@ -22,6 +22,15 @@
 		1492B1CE26716ADF003E0496 /* star.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1492B1CD26716AD2003E0496 /* star.png */; };
 		149A7EE5268BC74A00C2C20D /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 149A7EE3268BC74A00C2C20D /* Entity.cpp */; };
 		149AF0DA2689343900A83AE2 /* george_0.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 149AF0D92689341C00A83AE2 /* george_0.png */; };
+		14ED532426B2453C00973154 /* Level3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14ED532226B2453C00973154 /* Level3.cpp */; };
+		14ED532A26B30EB400973154 /* failure.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14ED532526B30E9E00973154 /* failure.wav */; };
+		14ED532B26B30EB700973154 /* newbounce.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14ED532926B30E9E00973154 /* newbounce.wav */; };
+		14ED532C26B30EBA00973154 /* squish.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14ED532626B30E9E00973154 /* squish.wav */; };
+		14ED532D26B30EBF00973154 /* success.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14ED532826B30E9E00973154 /* success.wav */; };
+		14ED532E26B30EC300973154 /* thedescent.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14ED532726B30E9E00973154 /* thedescent.mp3 */; };
+		14ED533026B319B300973154 /* Female 20-2.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14ED532F26B3112800973154 /* Female 20-2.png */; };
+		14ED533226B322BF00973154 /* goomba.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14ED533126B322BA00973154 /* goomba.png */; };
+		14ED533426B324F400973154 /* swamp_Tileset.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14ED533326B3245600973154 /* swamp_Tileset.png */; };
 		DBDF1B532323DE3F007CECB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B522323DE3F007CECB1 /* main.cpp */; };
 		DBDF1B5E2323DE8D007CECB1 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */; };
 		DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */ = {isa = PBXBuildFile; fileRef = DBDF1B5C2323DE8D007CECB1 /* shaders */; };
@@ -40,6 +49,14 @@
 			dstSubfolderSpec = 6;
 			files = (
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
+				14ED533426B324F400973154 /* swamp_Tileset.png in CopyFiles */,
+				14ED533226B322BF00973154 /* goomba.png in CopyFiles */,
+				14ED533026B319B300973154 /* Female 20-2.png in CopyFiles */,
+				14ED532A26B30EB400973154 /* failure.wav in CopyFiles */,
+				14ED532B26B30EB700973154 /* newbounce.wav in CopyFiles */,
+				14ED532C26B30EBA00973154 /* squish.wav in CopyFiles */,
+				14ED532D26B30EBF00973154 /* success.wav in CopyFiles */,
+				14ED532E26B30EC300973154 /* thedescent.mp3 in CopyFiles */,
 				140A573526AE505E0005A7CD /* tileset.png in CopyFiles */,
 				1435166A268C076E00C80872 /* platformPack_tile031.png in CopyFiles */,
 				1435166C268D412B00C80872 /* font2.png in CopyFiles */,
@@ -76,6 +93,16 @@
 		149A7EE3268BC74A00C2C20D /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		149A7EE4268BC74A00C2C20D /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		149AF0D92689341C00A83AE2 /* george_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = george_0.png; sourceTree = "<group>"; };
+		14ED532226B2453C00973154 /* Level3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Level3.cpp; sourceTree = "<group>"; };
+		14ED532326B2453C00973154 /* Level3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Level3.h; sourceTree = "<group>"; };
+		14ED532526B30E9E00973154 /* failure.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = failure.wav; sourceTree = "<group>"; };
+		14ED532626B30E9E00973154 /* squish.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = squish.wav; sourceTree = "<group>"; };
+		14ED532726B30E9E00973154 /* thedescent.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thedescent.mp3; sourceTree = "<group>"; };
+		14ED532826B30E9E00973154 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
+		14ED532926B30E9E00973154 /* newbounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newbounce.wav; sourceTree = "<group>"; };
+		14ED532F26B3112800973154 /* Female 20-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Female 20-2.png"; sourceTree = "<group>"; };
+		14ED533126B322BA00973154 /* goomba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goomba.png; sourceTree = "<group>"; };
+		14ED533326B3245600973154 /* swamp_Tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swamp_Tileset.png; sourceTree = "<group>"; };
 		DBDF1B4F2323DE3F007CECB1 /* SDLProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF1B522323DE3F007CECB1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderProgram.h; sourceTree = "<group>"; };
@@ -127,13 +154,21 @@
 			isa = PBXGroup;
 			children = (
 				140A573426AE504E0005A7CD /* tileset.png */,
+				14ED533326B3245600973154 /* swamp_Tileset.png */,
 				145D31F9267A93D700D266CB /* luigi.png */,
+				14ED533126B322BA00973154 /* goomba.png */,
 				1435166B268D411E00C80872 /* font2.png */,
 				14351669268C075400C80872 /* platformPack_tile031.png */,
 				1492B1CB26714B8D003E0496 /* mario.png */,
 				1492B1CD26716AD2003E0496 /* star.png */,
 				1492B1C92671455E003E0496 /* ctg.png */,
 				149AF0D92689341C00A83AE2 /* george_0.png */,
+				14ED532F26B3112800973154 /* Female 20-2.png */,
+				14ED532526B30E9E00973154 /* failure.wav */,
+				14ED532926B30E9E00973154 /* newbounce.wav */,
+				14ED532626B30E9E00973154 /* squish.wav */,
+				14ED532826B30E9E00973154 /* success.wav */,
+				14ED532726B30E9E00973154 /* thedescent.mp3 */,
 				DBDF1B5B2323DE8D007CECB1 /* glm */,
 				DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */,
 				DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */,
@@ -154,6 +189,8 @@
 				140A574026AF4E9A0005A7CD /* Level1.h */,
 				140A574226AF52A60005A7CD /* Level2.cpp */,
 				140A574326AF52A60005A7CD /* Level2.h */,
+				14ED532226B2453C00973154 /* Level3.cpp */,
+				14ED532326B2453C00973154 /* Level3.h */,
 			);
 			path = SDLProject;
 			sourceTree = "<group>";
@@ -230,6 +267,7 @@
 				DBDF1B532323DE3F007CECB1 /* main.cpp in Sources */,
 				149A7EE5268BC74A00C2C20D /* Entity.cpp in Sources */,
 				140A574A26B0D44A0005A7CD /* Menu.cpp in Sources */,
+				14ED532426B2453C00973154 /* Level3.cpp in Sources */,
 				140A573826AE51530005A7CD /* Map.cpp in Sources */,
 				DBDF1B5E2323DE8D007CECB1 /* ShaderProgram.cpp in Sources */,
 				140A574426AF52A60005A7CD /* Level2.cpp in Sources */,

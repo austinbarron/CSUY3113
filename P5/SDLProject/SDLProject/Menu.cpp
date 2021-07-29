@@ -7,17 +7,19 @@
 
 unsigned int MENU_data[] =
 {
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
-void Menu::Initialize() {
+void Menu::Initialize(int totalLivesLeft) {
+    
+    state.playerLivesLeft = totalLivesLeft;
     
     state.nextScene = -1;
     
@@ -29,22 +31,22 @@ void Menu::Initialize() {
     // Initialize Player
     state.player = new Entity();
     state.player->entityType = PLAYER;
-    state.player->position = glm::vec3(5,0,0);
+    state.player->position = glm::vec3(2,20,0);
     state.player->movement = glm::vec3(0);
     state.player->acceleration = glm::vec3(0,-9.81f,0);
     state.player->speed = 2.0f;
-    state.player->textureID = Util::LoadTexture("george_0.png");
+    state.player->textureID = Util::LoadTexture("Female 20-2.png");
     
-    state.player->animRight = new int[4] {3, 7, 11, 15};
-    state.player->animLeft = new int[4] {1, 5, 9, 13};
-    state.player->animUp = new int[4] {2, 6, 10, 14};
-    state.player->animDown = new int[4] {0, 4, 8, 12};
+    state.player->animRight = new int[3] {6, 7, 8};
+    state.player->animLeft = new int[3] {3, 4, 5};
+    state.player->animUp = new int[3] {9, 10, 11};
+    state.player->animDown = new int[3] {0, 1, 2};
 
     state.player->animIndices = state.player->animRight;
-    state.player->animFrames = 4;
+    state.player->animFrames = 3;
     state.player->animIndex = 0;
     state.player->animTime = 0;
-    state.player->animCols = 4;
+    state.player->animCols = 3;
     state.player->animRows = 4;
     
     state.player->height = 2.0f;
@@ -65,7 +67,7 @@ void Menu::Initialize() {
     // FOR NOW!!:
     state.enemies[0].isActive = false;
 }
-    
+
 void Menu::Update(float deltaTime) {
     
     state.player->Update(deltaTime, state.player, state.enemies, MENU_ENEMY_COUNT, state.map);
@@ -77,4 +79,8 @@ void Menu::Update(float deltaTime) {
     
 void Menu::Render(ShaderProgram *program) {
     state.map->Render(program); state.player->Render(program);
+    
+    GLuint fontTextureID = Util::LoadTexture("font2.png");
+    Util::DrawText(program, fontTextureID, "AUSTIN'S VOYAGE", 1, -0.5f, glm::vec3(1.5,-2.5,0));
+    Util::DrawText(program, fontTextureID, "hit enter", 1, -0.5f, glm::vec3(3,-4.5,0));
 }
