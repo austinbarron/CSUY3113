@@ -24,6 +24,7 @@
 		1494228926BDFCEF006F6C79 /* ghost.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1494228826BDFC0F006F6C79 /* ghost.png */; };
 		1494228C26C088D1006F6C79 /* Ending.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1494228A26C088D1006F6C79 /* Ending.cpp */; };
 		1494228E26C0913E006F6C79 /* thunderstorm.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1494228D26C09137006F6C79 /* thunderstorm.wav */; };
+		1494229026C10326006F6C79 /* tenseMusic.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1494228F26C1031E006F6C79 /* tenseMusic.mp3 */; };
 		149A7EE5268BC74A00C2C20D /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 149A7EE3268BC74A00C2C20D /* Entity.cpp */; };
 		149AF0DA2689343900A83AE2 /* george_0.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 149AF0D92689341C00A83AE2 /* george_0.png */; };
 		14ED532426B2453C00973154 /* Level3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14ED532226B2453C00973154 /* Level3.cpp */; };
@@ -53,6 +54,7 @@
 			dstSubfolderSpec = 6;
 			files = (
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
+				1494229026C10326006F6C79 /* tenseMusic.mp3 in CopyFiles */,
 				1494228E26C0913E006F6C79 /* thunderstorm.wav in CopyFiles */,
 				1494228926BDFCEF006F6C79 /* ghost.png in CopyFiles */,
 				14ED533426B324F400973154 /* swamp_Tileset.png in CopyFiles */,
@@ -102,6 +104,7 @@
 		1494228A26C088D1006F6C79 /* Ending.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ending.cpp; sourceTree = "<group>"; };
 		1494228B26C088D1006F6C79 /* Ending.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ending.h; sourceTree = "<group>"; };
 		1494228D26C09137006F6C79 /* thunderstorm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thunderstorm.wav; sourceTree = "<group>"; };
+		1494228F26C1031E006F6C79 /* tenseMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tenseMusic.mp3; sourceTree = "<group>"; };
 		149A7EE3268BC74A00C2C20D /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		149A7EE4268BC74A00C2C20D /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		149AF0D92689341C00A83AE2 /* george_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = george_0.png; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 				14ED532626B30E9E00973154 /* squish.wav */,
 				14ED532826B30E9E00973154 /* success.wav */,
 				14ED532726B30E9E00973154 /* thedescent.mp3 */,
+				1494228F26C1031E006F6C79 /* tenseMusic.mp3 */,
 				1494228D26C09137006F6C79 /* thunderstorm.wav */,
 				DBDF1B5B2323DE8D007CECB1 /* glm */,
 				DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */,

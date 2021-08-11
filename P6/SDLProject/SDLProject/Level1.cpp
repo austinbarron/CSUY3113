@@ -77,7 +77,7 @@ void Level1::Initialize(int totalLivesLeft) {
     
     state.player->livesLeft = totalLivesLeft;
     
-    state.player->position = glm::vec3(1,-2,0);
+    state.player->position = glm::vec3(1,-1,0);
     state.player->movement = glm::vec3(0);
     //state.player->acceleration = glm::vec3(0,-9.81f,0);
     state.player->speed = 4.0f;
@@ -95,8 +95,8 @@ void Level1::Initialize(int totalLivesLeft) {
     state.player->animCols = 3;
     state.player->animRows = 4;
     
-    state.player->height = 2.0f;
-    state.player->width = 0.8f;
+    state.player->height = 1.0f;
+    state.player->width = 1.0f;
     
     state.player->jumpPower = 8.0f;
     

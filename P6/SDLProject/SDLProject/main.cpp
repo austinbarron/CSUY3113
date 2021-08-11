@@ -23,7 +23,6 @@
 #include "Level3.h"
 #include "Ending.h"
 
-
 #include <SDL_mixer.h>
 
 SDL_Window* displayWindow;
@@ -66,8 +65,9 @@ void Initialize() {
     
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
     
-    music = Mix_LoadMUS("thedescent.mp3");
+    music = Mix_LoadMUS("tenseMusic.mp3");
     //Mix_PlayMusic(music, -1);
+    Mix_VolumeMusic(MIX_MAX_VOLUME);
     
     bounce = Mix_LoadWAV("newbounce.wav");
     squish = Mix_LoadWAV("squish.wav");
@@ -102,7 +102,7 @@ void Initialize() {
     SwitchToScene(sceneList[0], 3);
     
     effects = new Effects(projectionMatrix,viewMatrix);
-    //effects->Start(SHAKE, 1.0f);
+    //effects->Start(FADEOUT, 0.05f);
     
 }
 
@@ -206,7 +206,7 @@ void Update() {
          deltaTime -= FIXED_TIMESTEP;
      }
 
-     accumulator = deltaTime;
+    accumulator = deltaTime;
     
     viewMatrix = glm::mat4(1.0f);
     
@@ -221,9 +221,12 @@ void Update() {
         } /*else { // otherwise leave it alone, so as to not look past that southern wall
             viewMatrix = glm::translate(viewMatrix, glm::vec3(-5, 3.75, 0));
         }*/
-
+    
     
 
+    if (currentScene->state.nextScene == 3){
+        Mix_PlayMusic(music, -1);
+    }
     
     viewMatrix = glm::translate(viewMatrix, effects->viewOffset);
 }
@@ -240,6 +243,7 @@ void Render() {
     effects->Render();
     
     SDL_GL_SwapWindow(displayWindow);
+    
 }
 
 void Shutdown() {
@@ -247,18 +251,26 @@ void Shutdown() {
 }
 
 int main(int argc, char* argv[]) {
+    
     Initialize();
     
     while (gameIsRunning) {
         
         ProcessInput();
         Update();
-        
    
         if (currentScene->state.nextScene >= 0){ // if they're telling us a scene to go to, go there
+            
             Mix_VolumeChunk(success, MIX_MAX_VOLUME / 8);
             Mix_PlayChannel(-1,success, 0);
+            
+            //Mix_PlayMusic(music, -1);
+            
             SwitchToScene(sceneList[currentScene->state.nextScene],currentScene->state.player->livesLeft);
+            
+            if ( currentScene == sceneList[4]){
+                effects->Start(FADEOUT, 0.25f);
+            }
         }
         
         Render();

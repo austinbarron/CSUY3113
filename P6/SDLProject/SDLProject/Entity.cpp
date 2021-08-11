@@ -99,7 +99,7 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
          }
      }
 }
-
+/*
 void Entity::CheckCollisionsY(Map *map)
 {
     // Probes for tiles
@@ -146,7 +146,46 @@ void Entity::CheckCollisionsY(Map *map)
         collidedBottom = true;
     }
 }
+*/
 
+void Entity::CheckCollisionsY(Map *map)
+{
+    if (velocity.y == 0) return;
+    
+    float penetration_x = 0;
+    float penetration_y = 0;
+    glm::vec3 probe = glm::vec3(position.x, position.y + (height / 2), position.z);
+        
+    if (velocity.y < 0) {
+        probe.y = position.y - (height / 2);
+    }
+        
+    map->IsSolid(probe, &penetration_x, &penetration_y);
+    
+    if (penetration_y == 0) {
+        probe.x = position.x - (width / 2);
+        map->IsSolid(probe, &penetration_x, &penetration_y);
+    }
+    
+    if (penetration_y == 0) {
+        probe.x = position.x + (width / 2);
+        map->IsSolid(probe, &penetration_x, &penetration_y);
+    }
+    
+    if (penetration_y > 0) {
+        if (velocity.y > 0) {
+            position.y = floor(position.y);
+            collidedTop = true;
+        }
+        else if (velocity.y < 0) {
+            position.y = ceil(position.y);
+            collidedBottom = true;
+        }
+        velocity.y = 0;
+    }
+}
+
+/*
 void Entity::CheckCollisionsX(Map *map)
 {
     // Probes for tiles
@@ -166,6 +205,44 @@ void Entity::CheckCollisionsX(Map *map)
         position.x -= penetration_x;
         velocity.x = 0;
         collidedRight = true;
+    }
+}
+ */
+
+void Entity::CheckCollisionsX(Map *map)
+{
+    if (velocity.x == 0) return;
+    
+    float penetration_x = 0;
+    float penetration_y = 0;
+    glm::vec3 probe = glm::vec3(position.x + (width / 2), position.y, position.z);
+        
+    if (velocity.x < 0) {
+        probe.x = position.x - (width / 2);
+    }
+    
+    map->IsSolid(probe, &penetration_x, &penetration_y);
+    
+    if (penetration_x == 0) {
+        probe.y = position.y - (height / 2);
+        map->IsSolid(probe, &penetration_x, &penetration_y);
+    }
+    
+    if (penetration_x == 0) {
+        probe.y = position.y + (height / 2);
+        map->IsSolid(probe, &penetration_x, &penetration_y);
+    }
+    
+    if (penetration_x > 0) {
+        if (velocity.x > 0) {
+            position.x = floor(position.x);
+            collidedRight = true;
+        }
+        else if (velocity.x < 0) {
+            position.x = ceil(position.x);
+            collidedLeft = true;
+        }
+        velocity.x = 0;
     }
 }
 

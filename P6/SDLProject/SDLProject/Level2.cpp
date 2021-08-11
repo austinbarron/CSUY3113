@@ -10,12 +10,12 @@ int Level2_numEnemiesKilled = 0;
 
 unsigned int level2_data[] =
 {   30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,30,
-    30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,30,
-    30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,30,
+    30,  0,  0,  0,  0,  0,  0,  0,  0, 11,  0,  0,  0,30,
+    30,  0,  0,  0, 11,  0,  0,  0,  0, 11,  0,  0,  0,30,
     30,  0,  0,  0, 11,  0,  0,  0,  0, 11,  0, 11,  0,30,
-    30,  0,  0,  0, 11,  0, 11,  0,  0, 11,  0, 11,  0,30,
+    30,  0,  0,  0,  0,  0, 11,  0,  0, 11,  0, 11,  0,30,
     30,  0,  0,  0,  0,  0, 11,  0,  0,  0,  0, 11,  0,30,
-    30,  0,  0, 11, 11, 11, 11,  0, 11,  0,  0, 11,  0,30,
+    30,  0,  0, 11, 11, 11, 11,  0,  0,  0,  0, 11,  0,30,
     30,  0,  0,  0,  0,  0, 11, 11, 11, 11, 11, 11, 11,30,
     30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,30,
     30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,30
@@ -27,7 +27,7 @@ void Level2::Initialize(int totalLivesLeft) {
     
     //state.playerLivesLeft = totalLivesLeft;
     
-    state.clockTime = 46;
+    state.clockTime = 30;
     
     state.nextScene = -1;
     
@@ -42,10 +42,10 @@ void Level2::Initialize(int totalLivesLeft) {
     
     state.player->livesLeft = totalLivesLeft;
     
-    state.player->position = glm::vec3(2,-2,0);
+    state.player->position = glm::vec3(5,-2,0);
     state.player->movement = glm::vec3(0);
     //state.player->acceleration = glm::vec3(0,-9.81f,0);
-    state.player->speed = 4.0f;
+    state.player->speed = 3.0f;
     state.player->textureID = Util::LoadTexture("Female 20-2.png");
     
     state.player->animRight = new int[3] {6, 7, 8};
@@ -60,7 +60,7 @@ void Level2::Initialize(int totalLivesLeft) {
     state.player->animCols = 3;
     state.player->animRows = 4;
     
-    state.player->height = 2.0f;
+    state.player->height = 1.0f;
     state.player->width = 1.0f;
     
     state.player->jumpPower = 8.0f;
@@ -71,7 +71,7 @@ void Level2::Initialize(int totalLivesLeft) {
     
     state.enemies[0].entityType = ENEMY;
     state.enemies[0].textureID = enemyTextureID;
-    state.enemies[0].position = glm::vec3(6,-3,0);
+    state.enemies[0].position = glm::vec3(2,-3,0);
     state.enemies[0].speed = 1;
     state.enemies[0].aiType = WAITANDGO;
     state.enemies[0].aiState = IDLE;
@@ -86,7 +86,7 @@ void Level2::Initialize(int totalLivesLeft) {
     state.enemies[2].entityType = ENEMY;
     state.enemies[2].textureID = enemyTextureID;
     state.enemies[2].position = glm::vec3(8,-8,0);
-    state.enemies[2].speed = 1;
+    state.enemies[2].speed = 0.5;
     state.enemies[2].aiType = WAITANDGO;
     state.enemies[2].aiState = IDLE;
 }
@@ -136,16 +136,16 @@ void Level2::Render(ShaderProgram *program) {
             state.enemies[i].Render(program); // i'm pretty sure this is how we want to render our enemies but i'll figure it out
     }
     GLuint fontTextureID = Util::LoadTexture("font2.png");
-    Util::DrawText(program, fontTextureID, "be quick...", 1, -0.5f, glm::vec3(1.5,-1.5,0));
+    Util::DrawText(program, fontTextureID, "be quick!", 1, -0.5f, glm::vec3(1.5,-1.5,0));
     
     int clock = floor(state.clockTime);
     
     std::string stringClock = std::to_string(clock);
     
     if (clock > 0){
-        Util::DrawText(program, fontTextureID, stringClock, 1, -0.5f, glm::vec3(1.5,-3,0));
+        Util::DrawText(program, fontTextureID, stringClock, 1, -0.5f, glm::vec3(2,-3,0));
     } else { // our main character ran out of time;
         state.player->isActive = false;
-        Util::DrawText(program, fontTextureID, "you've perished", 1, -0.5f, glm::vec3(1.5,-3,0));
+        Util::DrawText(program, fontTextureID, "time's up", 1, -0.5f, glm::vec3(state.player[0].position.x-2,state.player[0].position.y+2,0));
     }
 }

@@ -1,7 +1,7 @@
 #include "Level3.h"
 
-#define LEVEL3_WIDTH 14
-#define LEVEL3_HEIGHT 11
+#define LEVEL3_WIDTH 21
+#define LEVEL3_HEIGHT 21
 
 #define LEVEL3_ENEMY_COUNT 3
 
@@ -24,17 +24,29 @@ unsigned int level3_data[] =
  */
 
 unsigned int level3_data[] =
-{   30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,30,
-    30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,30,
-    30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,30,
-    30,  0,  0,  0, 11,  0,  0,  0,  0, 11,  0, 11,  0,30,
-    30,  0,  0,  0, 11,  0, 11,  0,  0, 11,  0, 11,  0,30,
-    30,  0,  0,  0,  0,  0, 11,  0,  0,  0,  0, 11,  0,30,
-    30,  0,  0, 11, 11, 11, 11,  0, 11,  0,  0, 11,  0,30,
-    30,  0,  0,  0,  0,  0, 11, 11, 11, 11, 11, 11, 11,30,
-    30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,30,
-    30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,30,
-    30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,30
+//   0                   5                  10                  15                  20
+{   30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+    30,  0,  0,  0,  0,  0, 11,  0,  0,  0,  0,  0, 11,  0,  0,  0,  0,  0,  0,  0, 30, // -1
+    30,  0,  0,  0,  0,  0, 11,  0,  0,  0,  0,  0, 11, 11, 11, 11, 11, 11,  0,  0, 30,
+    30,  0,  0,  0,  0,  0, 11,  0,  0, 11,  0,  0,  0,  0,  0,  0,  0, 11, 11,  0, 30,
+    30,  0,  0,  0,  0,  0, 11,  0,  0, 11, 11,  0,  0,  0,  0,  0,  0, 11, 11,  0, 30,
+    30,  0,  0,  0,  0,  0, 11,  0,  0, 11,  0,  0,  0,  0,  0,  0,  0, 11, 11,  0, 30, // 5
+    30,  0,  0, 11,  0,  0,  0,  0,  0, 11, 11, 11,  0,  0,  0,  0,  0, 11, 11,  0, 30,
+    30,  0,  0, 11,  0,  0,  0,  0,  0, 11,  0, 11, 11, 11, 11, 11,  0,  0, 11,  0, 30,
+    30,  0,  0, 11,  0,  0, 11,  0,  0, 11,  0, 11, 11, 11, 11,  0,  0,  0, 11,  0, 30,
+    30,  0,  0, 11,  0,  0, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 11,  0, 30,
+    30,  0,  0, 11, 11, 11, 11,  0, 11,  0,  0,  0, 11,  0, 11,  0,  0,  0, 11,  0, 30, // 10
+    30,  0,  0, 11,  0,  0, 11, 11, 11, 11, 11, 11,  0,  0, 11,  0,  0,  0,  0,  0, 30,
+    30,  0,  0, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 11,  0,  0,  0,  0,  0, 30,
+    30,  0,  0, 11,  0,  0,  0,  0,  0,  0,  0,  0, 11, 11, 11, 11, 11,  0, 11, 11, 30,
+    30,  0,  0,  0,  0,  0, 11,  0, 11,  0,  0,  0,  0,  0,  0, 11, 11,  0,  0,  0, 30,
+    30,  0,  0,  0,  0,  0, 11,  0, 11, 11,  0,  0,  0,  0,  0,  0, 11, 11,  0,  0, 30, //15
+    30,  0,  0, 11, 11, 11, 11,  0, 11, 11, 11, 11, 11, 11,  0,  0, 11,  0,  0,  0, 30,
+    30,  0,  0, 11,  0,  0,  0,  0, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 30,
+    30,  0,  0, 11,  0,  0,  0,  0, 11, 11, 11, 11, 11, 11, 11, 11, 11,  0,  0, 11, 30,
+    30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 30,
+    30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 // 20
+    
 };
 
 void Level3::Initialize(int totalLivesLeft) {
@@ -59,7 +71,7 @@ void Level3::Initialize(int totalLivesLeft) {
     state.player->position = glm::vec3(2,-2,0);
     state.player->movement = glm::vec3(0);
     //state.player->acceleration = glm::vec3(0,-9.81f,0);
-    state.player->speed = 4.0f;
+    state.player->speed = 2.0f;
     state.player->textureID = Util::LoadTexture("Female 20-2.png");
     
     state.player->animRight = new int[3] {6, 7, 8};
@@ -74,7 +86,7 @@ void Level3::Initialize(int totalLivesLeft) {
     state.player->animCols = 3;
     state.player->animRows = 4;
     
-    state.player->height = 2.0f;
+    state.player->height = 1.0f;
     state.player->width = 1.0f;
     
     state.player->jumpPower = 8.0f;
@@ -85,7 +97,7 @@ void Level3::Initialize(int totalLivesLeft) {
     
     state.enemies[0].entityType = ENEMY;
     state.enemies[0].textureID = enemyTextureID;
-    state.enemies[0].position = glm::vec3(8,-4,0);
+    state.enemies[0].position = glm::vec3(9,-12,0);
     //state.enemies[0].acceleration = glm::vec3(0,-9.81f,0); gonna ignore acceleration for now
     state.enemies[0].speed = 1;
     state.enemies[0].aiType = WAITANDGO;
@@ -93,15 +105,15 @@ void Level3::Initialize(int totalLivesLeft) {
     
     state.enemies[1].entityType = ENEMY;
     state.enemies[1].textureID = enemyTextureID;
-    state.enemies[1].position = glm::vec3(12,-6,0);
+    state.enemies[1].position = glm::vec3(15,-1,0);
     state.enemies[1].speed = 1;
     state.enemies[1].aiType = WAITANDGO;
     state.enemies[1].aiState = IDLE;
     
     state.enemies[2].entityType = ENEMY;
     state.enemies[2].textureID = enemyTextureID;
-    state.enemies[2].position = glm::vec3(8,-8,0);
-    state.enemies[2].speed = 1;
+    state.enemies[2].position = glm::vec3(10.5,-19,0);
+    state.enemies[2].speed = 0.5;
     state.enemies[2].aiType = WAITANDGO;
     state.enemies[2].aiState = IDLE;
 }
@@ -115,11 +127,6 @@ void Level3::Update(float deltaTime) {
     
     for (int i = 0; i < LEVEL3_ENEMY_COUNT; i++){
         state.enemies[i].Update(deltaTime, state.player, state.enemies, LEVEL3_ENEMY_COUNT, state.map);
-    }
-    
-    if (state.player->position.y <= -15){ //they've fallen off the map;
-        state.player->position = glm::vec3(1,5,0);
-        state.player->livesLeft--;
     }
 
     //to see if we've killed all the enemies:
@@ -153,17 +160,17 @@ void Level3::Render(ShaderProgram *program) {
     
     GLuint fontTextureID = Util::LoadTexture("font2.png");
     
-    Util::DrawText(program, fontTextureID, "Final Test!", 0.95, -0.5f, glm::vec3(2,-1.5,0));
+    Util::DrawText(program, fontTextureID, "Final Test!", 0.95, -0.5f, glm::vec3(1,-1.5,0));
     
     int clock = floor(state.clockTime);
     
     std::string stringClock = std::to_string(clock);
     
     if (clock > 0){
-        Util::DrawText(program, fontTextureID, stringClock, 1, -0.5f, glm::vec3(1.5,-3,0));
+        Util::DrawText(program, fontTextureID, stringClock, 1, -0.5f, glm::vec3(2.5,-3,0));
     } else { // our main character ran out of time;
         state.player->isActive = false;
-        Util::DrawText(program, fontTextureID, "you've perished", 1, -0.5f, glm::vec3(1.5,-3,0));
+        Util::DrawText(program, fontTextureID, "time's up", 1, -0.5f, glm::vec3(state.player[0].position.x-2,state.player[0].position.y+2,0));
     }
     
 }

@@ -66,6 +66,8 @@ void Ending::Initialize(int totalLivesLeft) {
     state.enemies[0].aiState = IDLE;
     // FOR NOW!!:
     state.enemies[0].isActive = false;
+    
+    
 }
 
 void Ending::Update(float deltaTime) {

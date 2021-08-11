@@ -10,8 +10,8 @@ float attenuate(float dist, float a, float b) {
 }
 
 void main() {
-    float brightness = attenuate(distance(lightPosition, varPosition), 1.0, 0.0);
+    float brightness = attenuate(distance(lightPosition, varPosition), 2.0, 0.0);
     vec4 color = texture2D(diffuse, texCoordVar);
-    gl_FragColor = vec4(color.rgb * brightness * 1.0, color.a); // beautiful, use this one
+    gl_FragColor = vec4(color.rgb * brightness * 0.75, color.a); // beautiful, use this one
     //gl_FragColor = vec4(color.r * brightness, 0, 0, color.a); // the light makes things red
 }
